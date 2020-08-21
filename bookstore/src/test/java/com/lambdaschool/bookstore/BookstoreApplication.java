@@ -54,5 +54,6 @@ public class BookstoreApplication
             SpringApplication.run(BookstoreApplication.class,
                                   args);
         }
+        SpringApplication.run(BookstoreApplication.class, args);
     }
 }

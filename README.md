@@ -49,11 +49,30 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
-1. Can you explain exception handling in your application?
-2. Can you explain your user authentication flow?
-3. Can you show me your unit tests and describe how they work?
-4. Can you show how you deployed your application to a cloud service with a persistent database?
-
+1)Can you explain exception handling in your application?
+Within a "handler" package there is a classed named "RestExceptionHandler" and it is the driving class when an exception occurs.
+All of the exceptions throughout the APP are handled here. We use "RestControllerAdvice" annotation to give all of the controllers advice on how to handle
+exceptions. We use the annotation "Order(Ordered.HIGHEST_PRECEDENCE)" to take priority over all other controller advisors.
+within the "exceptions" package 3 custom exception handlers can be made for a resource found, not found and a cleaned up version on the default error message.
+2)Can you explain your user authentication flow?
+I start by adding the 3 spring dependencies in the pom file so that the added configurations will work,
+- spring boot starter security
+- spring security  test
+- spring security oauth2
+Afterwards you add some security configuration files into the config package such as:
+- "AuthorizationServerConfig" - this enables and configures the authorization server. It is responsible for granting authorization, generating
+  and maintaining access tokens
+- "SecurityConfig" - this class allows such protocols to be used throughoutthe app such as password encoding & location of token store.
+- "ResourceServerConfig" - this controls the users access & configures which roles have access to which endpoints.
+and within the "services package" adding a "SecurityUserServiceImpl" class allows the us to find a specific user amoung the database or throw an error
+if a user isnt found.
+3) Can you show me your unit tests and describe how they work?
+tests can be auto generated, however you have to write out the tests asking intelliJ to perform such tasks like a setup,findAll, findById
+delete, delete all, save, update. it runs a mock user to see if things work properly.
+4) Can you show how you deployed your application to a cloud service with a persistent database?
+First thing I did was add the "maven-heroku" dependencies so that everything going forward will work. I linked my project to heroku using
+my environment variables, I used intellij to implemet "maven deploy -x" to connect everything, providing  with a unique url where all my
+endpoints live.
 ## Instructions
 
 ### Task 1: Project Set Up
