@@ -64,9 +64,9 @@ public class BookServiceImplTest
     @Test
     public void delete()
     {
-        // do this
+
         bookService.delete(29);
-        // expect 4 from userService.findAll().size()
+
         assertEquals(4, bookService.findAll().size());
     }
     @Test
